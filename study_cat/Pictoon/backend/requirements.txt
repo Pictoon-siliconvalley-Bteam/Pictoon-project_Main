@@ -1,0 +1,13 @@
+
+jsonify
+
+pymysql
+flask_cors
+flask_sqlalchemy
+mysql-connector-python
+flask_ngrok
+
+
+
+
+flask_swagger_ui
