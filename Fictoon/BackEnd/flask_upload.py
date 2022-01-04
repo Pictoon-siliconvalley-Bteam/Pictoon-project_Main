@@ -1,26 +1,24 @@
-from flask import Flask, render_template, request
+from flask import Flask, flash, redirect, render_template, request, url_for, send_from_directory, session
 from werkzeug.utils import secure_filename
+import os
 
-# flask 웹서버를 실행 합니다.
 app = Flask(__name__)
+app.secret_key = "super secret key"
+app.config['UPLOAD_FOLDER'] = '/Users/seonghanim/PycharmProjects/JolJak/Fictoon-project/Fictoon/backend'
 
-
-
-# 업로드 창을 보여줍니다.
 @app.route('/upload')
-def upload():
+def upload_file():
     return render_template('upload.html')
 
 
-# 실제 업로드 처리를 합니다.
-@app.route('/upload_process', methods=['GET', 'POST'])
-def upload_process():
+@app.route('/uploader', methods=['POST'])
+def uploader_file():
     if request.method == 'POST':
-        f = request.files['upfile']
-        f.save(secure_filename(f.filename))
-        return '파일 업로드 완료'
+        file = request.files['file']
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        return 'file uploaded successfully'
 
 
-# 이 웹서버는 127.0.0.1 주소를 가지면 포트 5000번에 동작하며, 에러를 자세히 표시합니다
-if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=5001, debug=True)
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host = '0.0.0.0')
