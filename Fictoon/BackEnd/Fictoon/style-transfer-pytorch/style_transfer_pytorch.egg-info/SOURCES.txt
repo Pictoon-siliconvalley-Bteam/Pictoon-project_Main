@@ -1,0 +1,19 @@
+LICENSE
+README.md
+setup.py
+style_transfer/__init__.py
+style_transfer/cli.py
+style_transfer/sRGB Profile.icc
+style_transfer/style_transfer.py
+style_transfer/web_interface.py
+style_transfer/web_static/index.html
+style_transfer/web_static/jquery-3.5.1.min.js
+style_transfer/web_static/main.css
+style_transfer/web_static/main.js
+style_transfer/web_static/normalize.css
+style_transfer_pytorch.egg-info/PKG-INFO
+style_transfer_pytorch.egg-info/SOURCES.txt
+style_transfer_pytorch.egg-info/dependency_links.txt
+style_transfer_pytorch.egg-info/entry_points.txt
+style_transfer_pytorch.egg-info/requires.txt
+style_transfer_pytorch.egg-info/top_level.txt

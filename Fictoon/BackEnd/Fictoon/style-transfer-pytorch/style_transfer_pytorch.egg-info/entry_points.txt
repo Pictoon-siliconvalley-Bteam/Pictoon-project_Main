@@ -1,0 +1,3 @@
+[console_scripts]
+style_transfer = style_transfer.cli:main
+
