@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name='style-transfer-pytorch',
+    name='styletransferpytorch',
     version='0.1',
     description='Neural style transfer in PyTorch.',
     # TODO: add long description

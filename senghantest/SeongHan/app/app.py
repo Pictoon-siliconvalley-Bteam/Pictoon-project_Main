@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
-from style_transfer.cli import *
+from senghantest.SeongHan.app.styletransferpytorch.style_transfer.cli import *
 
 
 application = Flask(__name__)

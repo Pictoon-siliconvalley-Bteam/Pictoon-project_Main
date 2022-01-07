@@ -6,4 +6,4 @@ srgb_profile = (Path(__file__).resolve().parent / 'sRGB Profile.icc').read_bytes
 del Path
 
 from style_transfer import STIterate, StyleTransfer
-from web_interface import WebInterface
+from style_transfer.web_interface  import WebInterface
