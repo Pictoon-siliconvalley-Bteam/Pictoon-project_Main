@@ -17,9 +17,9 @@ import torch
 import torch.multiprocessing as mp
 from tqdm import tqdm
 
-from style_transfer.__init__ import srgb_profile
+from __init__ import srgb_profile
 from style_transfer import  StyleTransfer
-from style_transfer.web_interface import WebInterface
+from web_interface import WebInterface
 
 
 def prof_to_prof(image, src_prof, dst_prof, **kwargs):
