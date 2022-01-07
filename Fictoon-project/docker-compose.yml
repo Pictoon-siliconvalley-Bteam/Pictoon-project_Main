@@ -1,6 +1,17 @@
 version: '3'
 services:
-
+  #react
+  app:
+    restart: always
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
   #Flask App Container
   flask:
     build:
