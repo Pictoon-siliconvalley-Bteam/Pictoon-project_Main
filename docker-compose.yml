@@ -1,0 +1,119 @@
+version: '3'
+services:
+
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3-management
+    container_name: rabbit
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass
+  #react
+  app:
+    restart: always
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+  #Flask App Container
+  flask:
+    build:
+      context: app
+      dockerfile: style_transfer_pytorch/Dockerfile
+    container_name: flask
+    image: python3.6
+    restart: unless-stopped
+    tty: true
+    command: gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
+    environment:
+      MONGODB_DATABASE: flaskdb
+      MONGODB_USERNAME: flaskuser
+      MONGODB_PASSWORD: f19skp9ssw0rd
+      MONGODB_HOSTNAME: mongodb
+    volumes:
+      - ./app/:/app
+    depends_on:
+      - rabbit
+      - mongodb
+    #    networks:
+    #      - frontend
+    #      - backend
+    # 링크
+    links:
+      - rabbit
+  #worker
+  worker:
+    build:
+      context: app
+      dockerfile: style_transfer_pytorch/Dockerfile
+    command: celery -A tasks worker --loglevel INFO --autoscale=10,3
+    container_name: worker
+    links:
+      - rabbit
+    depends_on:
+      - rabbit
+  #MongoDB database container
+  mongodb:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongodbuser
+      MONGO_INITDB_ROOT_PASSWORD: cl3v3rP9ssw0rd
+      MONGO_INITDB_DATABASE: flaskdb
+      MONGODB_DATABASE: flaskdb
+      MONGODB_USER: flaskuser
+      MONGODB_PASS: f19skp9ssw0rd
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+#    volumes:
+#      - mongodbdata:/data/db
+#    networks:
+#      - backend
+
+  #Nginx Service
+  webserver:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    image: nginx:1.21.4
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    environment:
+      APP_ENV: "dev"
+      APP_NAME: "webserver"
+      APP_DEBUG: "true"
+      SERVICE_NAME: "webserver"
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - flask
+#    networks:
+#      - frontend
+#
+##Docker Networks
+#networks:
+#  frontend:
+#    driver: bridge
+#  backend:
+#    driver: bridge
+#
+##Volumes
+#volumes:
+#  mongodbdata:
+#    driver: local
+#  appdata:
+#    driver: local
+#  nginxdata:
+#    driver: local
