@@ -1,5 +1,19 @@
 version: '3'
 services:
+#  redis:
+#     image: redis:latest
+#     hostname: redis
+
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3-management
+    container_name: rabbit
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass
 
   #Flask App Container
   flask:
@@ -12,21 +26,31 @@ services:
     tty: true
     command : gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
     environment:
-      APP_ENV: "dev"
-      APP_DEBUG: "True"
-      APP_PORT: 5005
       MONGODB_DATABASE: flaskdb
       MONGODB_USERNAME: flaskuser
       MONGODB_PASSWORD: f19skp9ssw0rd
       MONGODB_HOSTNAME: mongodb
     volumes:
-      - appdata:/var/www
+      - ./app/:/app
     depends_on:
+      - rabbit
       - mongodb
-    networks:
-      - frontend
-      - backend
-
+#    networks:
+#      - frontend
+#      - backend
+    links:
+      - rabbit
+  #worker
+  worker:
+    build:
+      context: app
+      dockerfile: style_transfer_pytorch/Dockerfile
+    command: celery -A tasks worker --loglevel INFO --autoscale=10,3
+    container_name: worker
+    links:
+      - rabbit
+    depends_on:
+      - rabbit
   #MongoDB database container
   mongodb:
     image: mongo:4.0.8
@@ -42,10 +66,8 @@ services:
       MONGODB_PASS: f19skp9ssw0rd
       MONGODB_DATA_DIR: /data/db
       MONDODB_LOG_DIR: /dev/null
-    volumes:
-      - mongodbdata:/data/db
-    networks:
-      - backend
+#    networks:
+#      - backend
 
   #Nginx Service
   webserver:
@@ -64,25 +86,23 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    volumes:
-      - nginxdata:/etc/nginx
     depends_on:
       - flask
-    networks:
-      - frontend
+#    networks:
+#      - frontend
 
 #Docker Networks
-networks:
-  frontend:
-    driver: bridge
-  backend:
-    driver: bridge
+#networks:
+#  frontend:
+#    driver: bridge
+#  backend:
+#    driver: bridge
 
 #Volumes
-volumes:
-  mongodbdata:
-    driver: local
-  appdata:
-    driver: local
-  nginxdata:
-    driver: local
+#volumes:
+#  mongodbdata:
+#    driver: local
+#  appdata:
+#    driver: local
+#  nginxdata:
+#    driver: local

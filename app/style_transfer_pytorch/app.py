@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 from style_transfer.cli import *
 import time
 from style_transfer import style_transfer
-
+import tasks
 application = Flask(__name__)
 
 @application.route('/')
@@ -18,15 +18,13 @@ def upload_process():
         f2 = request.files['files2']
         f.save('./' +secure_filename("source.jpg"))
         f2.save('./' + secure_filename("style.jpg"))
-        print('1')
         return render_template('process.html')
 
 @application.route('/process',methods=['GET','POST'])
 def process():
     if request.method=='POST':
         print('2')
-        main()
-        #long_load()
+        job=tasks.start.delay()
         return "변환완료."
 
 def long_load():
