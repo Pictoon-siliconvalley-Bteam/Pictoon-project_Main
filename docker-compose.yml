@@ -10,10 +10,11 @@ services:
     image: python3.6
     restart: unless-stopped
     tty: true
+    command : gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
     environment:
       APP_ENV: "dev"
       APP_DEBUG: "True"
-      APP_PORT: 5000
+      APP_PORT: 5005
       MONGODB_DATABASE: flaskdb
       MONGODB_USERNAME: flaskuser
       MONGODB_PASSWORD: f19skp9ssw0rd
@@ -51,7 +52,7 @@ services:
     build:
       context: nginx
       dockerfile: Dockerfile
-    image: faizanbashir/webserver:latest
+    image: nginx:1.21.4
     container_name: webserver
     restart: unless-stopped
     tty: true

@@ -18,13 +18,15 @@ def upload_process():
         f2 = request.files['files2']
         f.save('./' +secure_filename("source.jpg"))
         f2.save('./' + secure_filename("style.jpg"))
+        print('1')
         return render_template('process.html')
 
 @application.route('/process',methods=['GET','POST'])
 def process():
     if request.method=='POST':
+        print('2')
         main()
-        long_load()
+        #long_load()
         return "변환완료."
 
 def long_load():
@@ -32,5 +34,6 @@ def long_load():
     return "You typed: %s"
 
 
-
+if __name__ == '__main__':
+    application.run(debug=True,host='0.0.0.0',port=5005)
 

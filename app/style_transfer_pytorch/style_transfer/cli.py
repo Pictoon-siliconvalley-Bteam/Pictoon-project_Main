@@ -141,11 +141,14 @@ class Callback:
 
 
 def main():
+    print('3')
     #setup_exceptions()
     #fix_start_method()
 
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+
 
     def arg_info(arg):
         defaults = StyleTransfer.stylize.__kwdefaults__
@@ -199,8 +202,9 @@ def main():
     p.add_argument('--browser', type=str, default='', nargs='?',
                    help='open a web browser (specify the browser if not system default)')
 
-    args = p.parse_args()
-
+    args, unknown = p.parse_known_args()
+    #args, unknown = parser.parse_known_args()
+    print('4')
     content_img = load_image("source.jpg", None)  #  content image ex) 1.jpg
     style_imgs = [load_image("style.jpg", None)]    #  style image ex) 2.jpg
 

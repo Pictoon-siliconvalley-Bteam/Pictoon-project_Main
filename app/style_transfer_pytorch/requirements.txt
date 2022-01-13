@@ -20,7 +20,6 @@ MarkupSafe==2.0.1
 multidict==5.2.0
 numpy==1.19.5
 Pillow==8.4.0
--e git+https://github.com/crowsonkb/style-transfer-pytorch.git@1107fe68639a59bd54bcda018e25dd770819ab19#egg=style_transfer_pytorch
 tifffile==2020.9.3
 torch==1.10.1
 torchvision==0.11.2
