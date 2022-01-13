@@ -1,8 +1,5 @@
 version: '3'
 services:
-#  redis:
-#     image: redis:latest
-#     hostname: redis
 
   rabbit:
     hostname: rabbit
@@ -14,7 +11,18 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=pass
-
+  #react
+  app:
+    restart: always
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
   #Flask App Container
   flask:
     build:
@@ -24,7 +32,7 @@ services:
     image: python3.6
     restart: unless-stopped
     tty: true
-    command : gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
+    command: gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
     environment:
       MONGODB_DATABASE: flaskdb
       MONGODB_USERNAME: flaskuser
@@ -35,9 +43,10 @@ services:
     depends_on:
       - rabbit
       - mongodb
-#    networks:
-#      - frontend
-#      - backend
+    #    networks:
+    #      - frontend
+    #      - backend
+    # 링크
     links:
       - rabbit
   #worker
@@ -66,6 +75,8 @@ services:
       MONGODB_PASS: f19skp9ssw0rd
       MONGODB_DATA_DIR: /data/db
       MONDODB_LOG_DIR: /dev/null
+#    volumes:
+#      - mongodbdata:/data/db
 #    networks:
 #      - backend
 
@@ -90,15 +101,15 @@ services:
       - flask
 #    networks:
 #      - frontend
-
-#Docker Networks
+#
+##Docker Networks
 #networks:
 #  frontend:
 #    driver: bridge
 #  backend:
 #    driver: bridge
-
-#Volumes
+#
+##Volumes
 #volumes:
 #  mongodbdata:
 #    driver: local

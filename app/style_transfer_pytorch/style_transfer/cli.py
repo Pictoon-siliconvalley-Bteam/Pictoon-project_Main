@@ -141,14 +141,11 @@ class Callback:
 
 
 def main():
-    print('3')
     #setup_exceptions()
     #fix_start_method()
 
     p = argparse.ArgumentParser(description=__doc__,
                                 formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-
-
 
     def arg_info(arg):
         defaults = StyleTransfer.stylize.__kwdefaults__
@@ -157,7 +154,7 @@ def main():
 
     # p.add_argument('content', type=str, help='the content image')
     # p.add_argument('styles', type=str, nargs='+', metavar='style', help='the style images')
-    p.add_argument('--output', '-o', type=str, default='./out/out.png',
+    p.add_argument('--output', '-o', type=str, default='out.png',
                    help='the output image')
     p.add_argument('--style-weights', '-sw', type=float, nargs='+', default=None,
                    metavar='STYLE_WEIGHT', help='the relative weights for each style image')
@@ -203,10 +200,9 @@ def main():
                    help='open a web browser (specify the browser if not system default)')
 
     args, unknown = p.parse_known_args()
-    #args, unknown = parser.parse_known_args()
-    print('4')
-    content_img = load_image("source.jpg", None)  #  content image ex) 1.jpg
-    style_imgs = [load_image("style.jpg", None)]    #  style image ex) 2.jpg
+
+    content_img = load_image("1.jpeg", None)  #  content image ex) 1.jpg
+    style_imgs = [load_image("3.jpg", None)]    #  style image ex) 2.jpg
 
     image_type = 'pil'
     if Path(args.output).suffix.lower() in {'.tif', '.tiff'}:
