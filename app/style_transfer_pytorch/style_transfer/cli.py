@@ -141,7 +141,6 @@ class Callback:
 
 
 def main():
-    print('3')
     #setup_exceptions()
     #fix_start_method()
 
@@ -204,9 +203,8 @@ def main():
 
     args, unknown = p.parse_known_args()
     #args, unknown = parser.parse_known_args()
-    print('4')
-    content_img = load_image("source.jpg", None)  #  content image ex) 1.jpg
-    style_imgs = [load_image("style.jpg", None)]    #  style image ex) 2.jpg
+    content_img = load_image("style_transfer/image/source.jpg", None)  #  content image ex) 1.jpg
+    style_imgs = [load_image("style_transfer/image/style.jpg", None)]    #  style image ex) 2.jpg
 
     image_type = 'pil'
     if Path(args.output).suffix.lower() in {'.tif', '.tiff'}:

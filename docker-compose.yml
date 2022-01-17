@@ -31,7 +31,7 @@ services:
       MONGODB_PASSWORD: f19skp9ssw0rd
       MONGODB_HOSTNAME: mongodb
     volumes:
-      - ./app/:/app
+      - ./app:/app
     depends_on:
       - rabbit
       - mongodb
@@ -51,6 +51,8 @@ services:
       - rabbit
     depends_on:
       - rabbit
+    volumes:
+      - ./app:/app
   #MongoDB database container
   mongodb:
     image: mongo:4.0.8
