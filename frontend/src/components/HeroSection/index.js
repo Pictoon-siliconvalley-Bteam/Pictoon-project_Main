@@ -12,7 +12,7 @@ const HeroSection = () => {
     
     return (
         
-        <HeroContainer>
+       <HeroContainer>
             <HeroBg></HeroBg>
                 <VideoBg autoPlay loop muted src={video} type='video/mp4'>
                 <source src="\videos\video.mp4" />
@@ -23,13 +23,13 @@ const HeroSection = () => {
                    배경사진과 얼굴사진을 업로드 해보세요!
                 </HeroP>
                 <HeroBtnWrapper>
-                    
-                   <Button type="button" onClick='www.google.com' onMouseEnter={onHover} onMouseLeav={onHover} primary="true" dark="true" >
-                        START {hover ? <ArrowForward/> : <ArrowRight /> }
-                    </Button>
+
+                   <a href={"api"}>
+                        START
+                    </a>
 
                 </HeroBtnWrapper>
-                
+
             </HeroContent>
         </HeroContainer>
     )

@@ -6,7 +6,7 @@ from style_transfer import style_transfer
 import tasks
 application = Flask(__name__)
 
-@application.route('/',methods =['GET','POST'])
+@application.route("/api",methods =['GET','POST'])
 def upload():
     if request.method == 'GET':
         return render_template('upload.html')
