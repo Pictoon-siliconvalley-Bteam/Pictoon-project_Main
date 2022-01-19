@@ -11,7 +11,7 @@ services:
       context: frontend
       dockerfile: Dockerfile
     volumes:
-      - '.:/frontend'
+      - './frontend:/frontend'
     container_name: frontend
     ports:
       - '3000:3000'

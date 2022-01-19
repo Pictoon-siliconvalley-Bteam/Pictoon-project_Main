@@ -18,16 +18,18 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
                             <label className="input-file-button" for="input-file">
                                 배경 사진 업로드
                             </label>
-                            <input type="file" id="input-file" style={{display:"none"}} /> <nbsp/>
+                            <input type="file" id="input-file" name = "files" style={{display:"none"}} /> <nbsp/>
                                
                             <label className="input-file-button" for="input-file">
                                 얼굴 사진 업로드
                             </label>
-                            <input type="file" id="input-file" style={{display:"none"}}/>
+                            <input type="file" id="input-file" name = "files2" style={{display:"none"}}/>
                             <br/><br/> <br/>
                         
-                           
-                            <Link to='/result'>Start</Link>
+                            <a href={"api"}>
+                             START
+                            </a>
+//                            <Link to='/api'>Start</Link>
                            
                          </IntroBlock>
                     </TextWrapper>

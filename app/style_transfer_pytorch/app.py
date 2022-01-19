@@ -8,23 +8,23 @@ import json
 import cv2
 application = Flask(__name__)
 
-@application.route("/api",methods =['GET','POST'])
-def upload():
-    if request.method == 'GET':
-        return render_template('upload.html')
-    if request.method == 'POST':
-        f = request.files['files']
-        f2 = request.files['files2']
-        f.save('./style_transfer/image/' + secure_filename("source.jpg"))
-        f2.save('./style_transfer/image/' + secure_filename("style.jpg"))
-        job = tasks.start.delay()
-        while():
-            if job.ready():
-                res = request.post("http://127.0.0.1:3000/result", 'out/out.png')
-                return res
-            else:
-                continue
-
+# @application.route("/api")
+# def upload():
+#         f = request.files['files']
+#         f2 = request.files['files2']
+#         f.save('./style_transfer/image/' + secure_filename("source.jpg"))
+#         f2.save('./style_transfer/image/' + secure_filename("style.jpg"))
+#         job = tasks.start.delay()
+#         while():
+#             if job.ready():
+#                 res = request.post("http://127.0.0.1:3000/result", 'out/out.png').json()
+#                 return jsonify(res)
+#             else:
+#                 continue
+@application.route("/api")
+def test():
+    print('1')
+    job = tasks.start.delay()
 # @application.route("/api/getimage")
 # def send_image():
 #     if request.method!="POST":
