@@ -50,7 +50,7 @@ services:
       - rabbit
       - mongodb
 #    networks:
-#      - frontend
+#      - frontend1
 #      - backend
     links:
       - rabbit
@@ -105,11 +105,11 @@ services:
     depends_on:
       - flask
 #    networks:
-#      - frontend
+#      - frontend1
 
 #Docker Networks
 #networks:
-#  frontend:
+#  frontend1:
 #    driver: bridge
 #  backend:
 #    driver: bridge

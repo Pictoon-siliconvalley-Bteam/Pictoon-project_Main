@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, make_response, send_file, jsonify
 from werkzeug.utils import secure_filename
 from style_transfer.cli import *
 import time
 from style_transfer import style_transfer
 import tasks
+import json
+import cv2
 application = Flask(__name__)
 
 @application.route("/api",methods =['GET','POST'])
@@ -16,24 +18,37 @@ def upload():
         f.save('./style_transfer/image/' + secure_filename("source.jpg"))
         f2.save('./style_transfer/image/' + secure_filename("style.jpg"))
         job = tasks.start.delay()
-        return render_template('download.html', JOBID=job.id)
+        while():
+            if job.ready():
+                res = request.post("http://127.0.0.1:3000/result", 'out/out.png')
+                return res
+            else:
+                continue
 
-@application.route('/progress')
-def progress():
-    jobid = request.values.get('jobid')
-    if jobid:
-        job = tasks.get_job(jobid)
-        if job.state == 'PROGRESS':
-            return json.dumps(dict(
-                state=job.state,
-                progress=job.result['current'],
-            ))
-        elif job.state == 'SUCCESS':
-            return json.dumps(dict(
-                state=job.state,
-                progress=1.0,
-            ))
-    return '{}'
+# @application.route("/api/getimage")
+# def send_image():
+#     if request.method!="POST":
+#         return jsonify(None), 405
+#     try:
+#
+
+
+# @application.route('/progress')
+# def progress():
+#     jobid = request.values.get('jobid')
+#     if jobid:
+#         job = tasks.get_job(jobid)
+#         if job.state == 'PROGRESS':
+#             return json.dumps(dict(
+#                 state=job.state,
+#                 progress=job.result['current'],
+#             ))
+#         elif job.state == 'SUCCESS':
+#             return json.dumps(dict(
+#                 state=job.state,
+#                 progress=1.0,
+#             ))
+#     return '{}'
 
 # @application.route('/process',methods=['GET','POST'])
 # def process():

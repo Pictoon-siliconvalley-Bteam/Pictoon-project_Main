@@ -1,14 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import Styled from 'styled-components'
-import {Button} from '../ButtonElement'
-import Fade from "react-reveal/Fade"
-import { InfoContainer,InfoWrapper,InfoRow,Column1,Column2,TextWrapper,TopLine,Heading,Subtitle,BtnWrap,ImgWrap,Img,IntroBlock } from './InfoElements'
+import { Link } from 'react-router-dom'
+import { InfoContainer,InfoWrapper,InfoRow,Column1,Column2,TextWrapper,TopLine,Heading,Subtitle,ImgWrap,Img,IntroBlock,buttonlink} from './InfoElements'
 
-const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,description,ButtonLabel,alt,primary,dark,dark2}) => {
+const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,description,alt}) => {
     return (
         <>
-        <Fade bottom>
+     
           <InfoContainer lightBg={lightBg} id={id}>
           <InfoWrapper>
             <InfoRow imgStart={imgStart}>
@@ -18,22 +15,23 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
                             <TopLine>{topLine}</TopLine>
                             <Heading lightText={lightText}>{headLine}</Heading>
                             <Subtitle darkText={darkText}>{description}</Subtitle>
-                            
-                            <BtnWrap>
-                                <Button 
-                                smooth={true}
-                                duration={500}
-                                spy={true}
-                                exact="true"
-                                offset={-80}
-                                primary={primary ? 1 : 0}
-                                dark={dark ? 1 : 0}
-                                dark2={dark2 ? 1 : 0}
-                                >{ButtonLabel}START</Button>
-                         </BtnWrap>
-                         
+                            <label className="input-file-button" for="input-file">
+                                배경 사진 업로드
+                            </label>
+                            <input type="file" id="input-file" style={{display:"none"}} /> <nbsp/>
+                               
+                            <label className="input-file-button" for="input-file">
+                                얼굴 사진 업로드
+                            </label>
+                            <input type="file" id="input-file" style={{display:"none"}}/>
+                            <br/><br/> <br/>
+                        
+                           
+                            <Link to='/result'>Start</Link>
+                           
                          </IntroBlock>
                     </TextWrapper>
+                    
                 </Column1> 
                 <Column2>
                     <ImgWrap>
@@ -43,9 +41,10 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
             </InfoRow>   
           </InfoWrapper>    
           </InfoContainer> 
-          </Fade>    
+        
         </>
     )
 }
+
 
 export default InfoSection
