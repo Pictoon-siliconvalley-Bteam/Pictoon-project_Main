@@ -5,3 +5,24 @@
   font-family: 'Encode Sans Expanded',
   sans-serif;
 }
+a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #01bf71;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.input-file-button{
+  padding: 6px 25px;
+  background-color:#01bf71;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+

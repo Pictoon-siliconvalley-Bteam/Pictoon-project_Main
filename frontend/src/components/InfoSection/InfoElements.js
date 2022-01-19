@@ -12,7 +12,7 @@ export const InfoContainer = styled.div`
 export const InfoWrapper = styled.div`
     display: grid;
     z-index: 1;
-    height: 860px;
+    height: 800px;
     width : 100%;
     max-width: 1100px;
     margin-right: auto;
@@ -92,10 +92,27 @@ export const Img = styled.img`
 `
 
 export const IntroBlock = styled.div`
-  margin-bottom: 135px;
+  margin-bottom: 100px;
   @media (max-width: 768px) {
     padding: 25px;
   }
+`
 
- 
+export const buttonlink = styled.div`
+   border-radius: 50px;
+   background: ${({primary}) => (primary ? '#01BF71' : '#010606')};
+   white-space: nowrap;
+   padding: ${({big}) => (big ? '14px 48px' : '12px 30px')};
+   color: ${({dark}) => (dark ? '#010606' : '#fff')};
+   font-size: ${({fontBig}) => (fontBig ? '20px' : '16px')};
+   outline : none;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   transition: all 0.2s ease-in-out;
+   &:hover {
+       transition: all 0.2s ease-in-out;
+       background: ${({primary}) => (primary ? '#fff' : '#01BF71')};
 `

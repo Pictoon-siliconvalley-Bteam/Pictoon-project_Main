@@ -8,12 +8,6 @@ const Footer = () => {
                 <FooterLinksContainer>
                     <FooterLinksWrapper>
                         <FooterLinkItems>
-                            <FooterLinkTitle>About us</FooterLinkTitle>
-                                <FooterLink to='/'>ss</FooterLink>
-                                <FooterLink to='/'>ss</FooterLink>
-                                <FooterLink to='/'>ss</FooterLink>
-                                <FooterLink to='/'>ss</FooterLink>
-                                <FooterLink to='/'>ss</FooterLink>
                         </FooterLinkItems>
                     </FooterLinksWrapper>
                 </FooterLinksContainer>
