@@ -6,32 +6,55 @@ from style_transfer import style_transfer
 import tasks
 import json
 import cv2
+from connection import s3_connection
+from config import BUCKET_NAME
+
 application = Flask(__name__)
 
-# @application.route("/api")
-# def upload():
-#         f = request.files['files']
-#         f2 = request.files['files2']
-#         f.save('./style_transfer/image/' + secure_filename("source.jpg"))
-#         f2.save('./style_transfer/image/' + secure_filename("style.jpg"))
-#         job = tasks.start.delay()
-#         while():
-#             if job.ready():
-#                 res = request.post("http://127.0.0.1:3000/result", 'out/out.png').json()
-#                 return jsonify(res)
-#             else:
-#                 continue
-@application.route("/api")
-def test():
-    print('1')
-    job = tasks.start.delay()
-# @application.route("/api/getimage")
-# def send_image():
-#     if request.method!="POST":
-#         return jsonify(None), 405
-#     try:
-#
 
+def save_image(s3, bucket, filepath, access_key):
+    try:
+        s3.upload_file(
+            Filename=filepath,
+            Bucket=bucket,
+            Key=access_key,
+            ExtraArgs={"ContentType": "image/png", "ACL": "public-read"},
+        )
+    except Exception as e:
+        return False
+    return True
+
+
+def s3_get_image_url(s3, filename):
+    """
+    s3 : 연결된 s3 객체(boto3 client)
+    filename : s3에 저장된 파일 명
+    """
+    location = s3.get_bucket_location(Bucket='fictoonimage')["LocationConstraint"]
+    return f"https://{'fictoonimage'}.s3.{location}.amazonaws.com/{filename}.jpg"
+
+
+@application.route('/api', methods=['GET','POST'])
+def upload1():
+    if request.method == 'POST':
+        print("1")
+        f = request.files['files']
+        f.save('./style_transfer/image/' + secure_filename("source.jpg"))
+        print("2")
+        f2 = request.files['files2']
+        print("3")
+        f2.save('./style_transfer/image/' + secure_filename("style.jpg"))
+        print("4")
+        job = tasks.start.delay()
+        print("5")
+        while True:
+            if job.ready():
+                s3 = s3_connection()
+                save_image(s3, 'fictoonimage', './out/out.png', 'out.png')
+                url = s3_get_image_url(s3, 'out.png')
+                return url
+            else:
+                continue
 
 # @application.route('/progress')
 # def progress():
@@ -63,4 +86,3 @@ def test():
 
 # if __name__ == '__main__':
 #     application.run(debug=True,host='0.0.0.0',port=5005)
-

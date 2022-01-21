@@ -23,10 +23,6 @@ const HeroSection = () => {
                    배경사진과 얼굴사진을 업로드 해보세요!
                 </HeroP>
                 <HeroBtnWrapper>
-                  <a href={"api"}>
-                     START
-                  </a>
-
                 </HeroBtnWrapper>   
             </HeroContent>
         </HeroContainer>

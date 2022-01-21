@@ -1,3 +1,3 @@
-AWS_ACCESS_KEY = "your access key"
-AWS_SECRET_KEY = "your secret key"
-BUCKET_NAME = "your bucket name"
+AWS_ACCESS_KEY = "AKIAVZ2TH3ENF7O3SWTM"
+AWS_SECRET_KEY = "BQKVsbGhMEMg8HEqQhMouzrGqaVni11NKM7Eqpfo"
+BUCKET_NAME = "fictoonimage"
