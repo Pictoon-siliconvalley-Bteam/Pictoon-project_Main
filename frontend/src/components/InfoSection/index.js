@@ -9,11 +9,13 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
     const[files, setFiles] = useState('');
     const[files2, setFiles2] = useState('');
     const onLoadFile = (e) => {
+        e.preventDefault()
         const file = e.target.files[0];
         console.log(file);
         setFiles(file);
     }
     const onLoadFile2 = (e) => {
+        e.preventDefault()
         const file = e.target.files[0];
         console.log(file);
         setFiles2(file);
@@ -23,6 +25,9 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
         const formdata = new FormData();
         formdata.append('files',files);
         formdata.append('files2',files2);
+        for (var pair of formdata.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]);
+        }
 
 
         const config = {
@@ -30,7 +35,7 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
             'content-type' : 'multipart/form-data',
         },
         };
-        Axios.post('http://127.0.0.1:5005/api',formdata,config);
+        Axios.post('api',formdata,config);
 
 
 
@@ -60,10 +65,10 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
                             onChange={onLoadFile}
                         /> <nbsp/>
                                
-                            <label className="input-file-button" for="input-file">
+                            <label className="input-file-button" for="input-file2">
                                 배경 사진 업로드
                             </label>
-                           <input type="file" id="input-file" style={{display:"none"}}  
+                           <input type="file" id="input-file2" style={{display:"none"}}
                             accept='image/jpg,impge/png,image/jpeg,image/gif' 
                             name='files2' 
                             onChange={onLoadFile2}

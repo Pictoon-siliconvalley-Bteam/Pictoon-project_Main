@@ -56,6 +56,7 @@ def upload1():
             else:
                 continue
 
+
 # @application.route('/progress')
 # def progress():
 #     jobid = request.values.get('jobid')
