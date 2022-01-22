@@ -268,6 +268,8 @@ def main():
     with open('trace.json', 'w') as fp:
         json.dump(callback.get_trace(), fp, indent=4)
 
+    return True
+
 
 if __name__ == '__main__':
     main()

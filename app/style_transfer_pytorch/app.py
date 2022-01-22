@@ -34,7 +34,7 @@ def s3_get_image_url(s3, filename):
     return f"https://{'fictoonimage'}.s3.{location}.amazonaws.com/{filename}.jpg"
 
 
-@application.route('/api', methods=['GET','POST'])
+@application.route('/api', methods=['GET', 'POST'])
 def upload1():
     if request.method == 'POST':
         print("1")
@@ -47,15 +47,21 @@ def upload1():
         print("4")
         job = tasks.start.delay()
         print("5")
-        while True:
-            if job.ready():
-                s3 = s3_connection()
-                save_image(s3, 'fictoonimage', './out/out.png', 'out.png')
-                url = s3_get_image_url(s3, 'out.png')
-                return url
-            else:
-                continue
-
+        job.get()
+        print("6")
+        s3 = s3_connection()
+        print("7")
+        out = open('out/out.png', 'rb')
+        s3.put_object(
+            Bucket=BUCKET_NAME,
+            Body=out,
+            Key='out',
+        )
+        print("8")
+        url = s3_get_image_url(s3, 'out.png')
+        print(url)
+        print("9")
+        return url
 
 # @application.route('/progress')
 # def progress():
