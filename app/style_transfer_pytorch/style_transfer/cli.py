@@ -124,7 +124,7 @@ class Callback:
             self.web_interface.put_iterate(iterate, self.st.get_image_tensor())
         if iterate.i == iterate.i_max:
             self.progress.close()
-            if max(iterate.w, iterate.h) != 128:  # max size for image
+            if max(iterate.w, iterate.h) != 512:  # max size for image
                 save_image(self.args.output, self.st.get_image(self.image_type))
             else:
                 if self.web_interface is not None:
@@ -229,7 +229,7 @@ def main():
     #         print(f'GPU {i} type: {props.name} (compute {props.major}.{props.minor})')
     #         print(f'GPU {i} RAM:', round(props.total_memory / 1024 / 1024), 'MB')
 
-    end_scale = 128
+    end_scale = 512
     # if args.end_scale.endswith('+'):
     #     end_scale = get_safe_scale(*content_img.size, end_scale)
     # args.end_scale = end_scale

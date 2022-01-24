@@ -9,8 +9,8 @@ export default function Result({lightBg,id,imgStart,topLine,lightText,headLine,d
     const [loading,setLoading] = useState(true);
     setTimeout(() => {
         setLoading(false);
-    },180000); //1000초당 1초
-   
+    },120000); //1000초당 1초
+
     return (
         <ResultContainer>
          <Column2>
@@ -25,11 +25,10 @@ export default function Result({lightBg,id,imgStart,topLine,lightText,headLine,d
                             width="600px"
                             height="500px" />
                         </> }
-               
-                     
+
+
                 </ImgWrap>
          </Column2>
          </ResultContainer>
     )
 }
-
