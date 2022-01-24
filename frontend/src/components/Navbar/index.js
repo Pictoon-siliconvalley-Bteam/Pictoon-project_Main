@@ -9,7 +9,7 @@ const Navbar = ({toggle}) => {
         <>
             <Nav>
                 <NavbarContainer>
-                    <NavLogo to='/'>Fictoon</NavLogo>
+                    <NavLogo to='/'>Pictoon</NavLogo>
                 </NavbarContainer>
             </Nav>
         </>
