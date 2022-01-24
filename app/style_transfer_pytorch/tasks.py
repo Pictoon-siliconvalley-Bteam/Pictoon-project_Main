@@ -3,7 +3,7 @@ import random
 import datetime
 
 from io import BytesIO
-from celery import Celery, current_task
+from celery import Celery, current_task, shared_task
 from celery.result import AsyncResult
 from style_transfer.cli import *
 import time
@@ -11,7 +11,7 @@ import time
 REDIS_URL = 'redis://redis:6379/0'
 BROKER_URL = 'amqp://user:pass@rabbit:5672//'
 
-CELERY = Celery('tasks', broker=BROKER_URL)
+CELERY = Celery('tasks',backend=REDIS_URL ,broker=BROKER_URL)
 CELERY.conf.accept_content = ['json', 'msgpack']
 CELERY.conf.result_serializer = 'msgpack'
 CELERY.conf.update(
@@ -34,10 +34,10 @@ def get_job(job_id):
     return AsyncResult(job_id, app=CELERY)
 
 
-@CELERY.task()
+@shared_task
 def start():
     main()
-    return '완료'
+    return 1
 
 
 @CELERY.task()

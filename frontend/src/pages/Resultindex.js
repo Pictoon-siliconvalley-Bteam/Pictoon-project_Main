@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import Footer from '../components/Footer'
+import { homeObjOne } from '../components/InfoSection/Data'
+import {ResultObjOne} from '../components/Result/Data'
 import Navbar from '../components/Navbar'
 import ResultPage from '../components/Result/Resultpage'
 
@@ -13,7 +15,7 @@ const Result = () => {
     return (
         <>
             <Navbar toggle={toggle} />
-            <ResultPage/>
+            <ResultPage {...ResultObjOne}/>
             <Footer/>
         </>
     )
