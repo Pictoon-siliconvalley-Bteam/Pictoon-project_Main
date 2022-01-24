@@ -7,12 +7,12 @@ export const Flex = styled.div`
 `;
 
 export const Title = styled.p`
-font-size: 64px;
-font-weight: bold;
-margin: 8px;
-margin-bottom: 96px;
-text-align: center;
-color: #01bf71;
+	font-size: 64px;
+	font-weight: bold;
+	margin: 8px;
+	margin-bottom: 96px;
+	text-align: center;
+	color: #01bf71;
 `;
 export const FlexBox = styled.div`
 	display: flex;

@@ -42,7 +42,7 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
         }
 
 
-    
+
     return (
         <>
           <InfoContainer lightBg={lightBg} id={id}>
@@ -54,7 +54,7 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
                             <TopLine>{topLine}</TopLine>
                             <Heading lightText={lightText}>{headLine}</Heading>
                             <Subtitle darkText={darkText}>{description}</Subtitle>
-                            
+
                             <label className="input-file-button" for="input-file">
                                 얼굴 사진 업로드
                             </label>
@@ -64,32 +64,32 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headLine,darkText,de
 
                             onChange={onLoadFile}
                         /> <nbsp/>
-                               
+
                             <label className="input-file-button" for="input-file2">
                                 배경 사진 업로드
                             </label>
                            <input type="file" id="input-file2" style={{display:"none"}}
-                            accept='image/jpg,impge/png,image/jpeg,image/gif' 
-                            name='files2' 
+                            accept='image/jpg,impge/png,image/jpeg,image/gif'
+                            name='files2'
                             onChange={onLoadFile2}
                            />
                             <br/><br/> <br/>
 
                             <Link to='/result' onClick={handleClick}>Start</Link>
-                           
+
                          </IntroBlock>
                     </TextWrapper>
-                    
-                </Column1> 
+
+                </Column1>
                 <Column2>
                     <ImgWrap>
                     <Img src={require('../../images/svg-3.svg').default} alt={alt} />
                     </ImgWrap>
                 </Column2>
-            </InfoRow>   
-          </InfoWrapper>    
-          </InfoContainer> 
-        
+            </InfoRow>
+          </InfoWrapper>
+          </InfoContainer>
+
         </>
     )
 }

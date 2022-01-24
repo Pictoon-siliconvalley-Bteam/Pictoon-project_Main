@@ -55,10 +55,10 @@ def upload1():
         s3.put_object(
             Bucket=BUCKET_NAME,
             Body=out,
-            Key='out',
+            Key='out' + 'jpg',
         )
         print("8")
-        url = s3_get_image_url(s3, 'out.png')
+        url = s3_get_image_url(s3, 'out')
         print(url)
         print("9")
         return url

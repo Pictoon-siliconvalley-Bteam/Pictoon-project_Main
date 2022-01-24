@@ -1,32 +1,35 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react'
-import {Img,Column2,ImgWrap,ResultContainer} from '../Result/ResultElements'
+import { Link } from 'react-router-dom'
+import {Column2,ImgWrap,ResultContainer,Heading,Subtitle} from '../Result/ResultElements'
 import Spinner from '../Spinner/Spinnerindex'
 
-const Result = (alt) => {
-    //{loading ? <Spinner /> : }
+export default function Result({lightBg,id,imgStart,topLine,lightText,headLine,darkText,description,alt}){
     const [image,setImage] = useState([]);
     const [loading,setLoading] = useState(true);
-    
-    useEffect(() => {
-        axios.get('https://fictoonimage.s3.ap-northeast-2.amazonaws.com/out.png.jpg')
-        .then(response => {
-            setImage(response.data);
-            setLoading(false);
-        })
-    }, [])
-
+    setTimeout(() => {
+        setLoading(false);
+    },180000); //1000초당 1초
    
     return (
         <ResultContainer>
          <Column2>
                 <ImgWrap>
                 {loading ? <Spinner /> :
-                     <img src="https://fictoonimage.s3.ap-northeast-2.amazonaws.com/out.png.jpg"/>}
+                   <>
+                   <Heading lightText={lightText}>{headLine}</Heading>
+                   <Subtitle darkText={darkText}>{description}</Subtitle>
+                   <Link to='//nft.korbit.co.kr/'>Go to NFT Market </Link>
+                   <br/><br/>
+                   <img src="https://fictoonimage.s3.ap-northeast-2.amazonaws.com/out.jpg"
+                            width="600px"
+                            height="500px" />
+                        </> }
+               
+                     
                 </ImgWrap>
          </Column2>
          </ResultContainer>
     )
 }
 
-export default Result
