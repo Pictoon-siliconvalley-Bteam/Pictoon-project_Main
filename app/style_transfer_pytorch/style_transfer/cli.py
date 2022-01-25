@@ -230,7 +230,7 @@ def main():
             print(f'GPU {i} type: {props.name} (compute {props.major}.{props.minor})')
             print(f'GPU {i} RAM:', round(props.total_memory / 1024 / 1024), 'MB')
 
-    end_scale = 500
+    end_scale = 399
     if args.end_scale.endswith('+'):
         end_scale = get_safe_scale(*content_img.size, "end_scale")
     args.end_scale = end_scale

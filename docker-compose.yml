@@ -40,7 +40,7 @@ services:
     runtime: nvidia
     restart: unless-stopped
     tty: true
-    command : gunicorn -b 0.0.0.0:5005 -w 3 -t 600 wsgi
+    command : gunicorn -b 0.0.0.0:5005 -w 3 -t 900 wsgi
 #    environment:
 ##      MONGODB_DATABASE: flaskdb
 ##      MONGODB_USERNAME: flaskuser
