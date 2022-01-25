@@ -37,7 +37,7 @@ def get_job(job_id):
 @shared_task
 def start():
     main()
-    return 1
+    return 3
 
 
 @CELERY.task()

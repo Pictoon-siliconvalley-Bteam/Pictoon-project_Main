@@ -9,7 +9,7 @@ export default function Result({lightBg,id,imgStart,topLine,lightText,headLine,d
     const [loading,setLoading] = useState(true);
     setTimeout(() => {
         setLoading(false);
-    },120000); //1000초당 1초
+    },5000); //1000초당 1초
 
     return (
         <ResultContainer>

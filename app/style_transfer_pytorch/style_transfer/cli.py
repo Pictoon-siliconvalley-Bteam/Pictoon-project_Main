@@ -122,13 +122,14 @@ class Callback:
         self.progress.update()
         if self.web_interface is not None:
             self.web_interface.put_iterate(iterate, self.st.get_image_tensor())
-        if iterate.i == iterate.i_max:
-            self.progress.close()
-            if max(iterate.w, iterate.h) != 512:  # max size for image
-                save_image(self.args.output, self.st.get_image(self.image_type))
-            else:
-                if self.web_interface is not None:
-                    self.web_interface.put_done()
+        # if iterate.i == iterate.i_max:
+        #     self.progress.close()
+        #     if max(iterate.w, iterate.h) != 512:  # max size for image
+        #         save_image(self.args.output, self.st.get_image(self.image_type))
+        #         return
+        #     else:
+        #         if self.web_interface is not None:
+        #             self.web_interface.put_done()
         elif iterate.i % self.args.save_every == 0:
             save_image(self.args.output, self.st.get_image(self.image_type))
 
@@ -170,8 +171,8 @@ def main():
                    help='the smoothing weight')
     p.add_argument('--min-scale', '-ms', **arg_info('min_scale'),
                    help='the minimum scale (max image dim), in pixels')
-    # p.add_argument('--end-scale', '-s', type=str, default='512',
-    #                help='the final scale (max image dim), in pixels')
+    p.add_argument('--end-scale', '-s', type=str, default='280',
+                   help='the final scale (max image dim), in pixels')
     p.add_argument('--iterations', '-i', **arg_info('iterations'),
                    help='the number of iterations per scale')
     p.add_argument('--initial-iterations', '-ii', **arg_info('initial_iterations'),
@@ -223,16 +224,16 @@ def main():
 
     if devices[0].type == 'cpu':
         print('CPU threads:', torch.get_num_threads())
-    # if devices[0].type == 'cuda':
-    #     for i, device in enumerate(devices):
-    #         props = torch.cuda.get_device_properties(device)
-    #         print(f'GPU {i} type: {props.name} (compute {props.major}.{props.minor})')
-    #         print(f'GPU {i} RAM:', round(props.total_memory / 1024 / 1024), 'MB')
+    if devices[0].type == 'cuda':
+        for i, device in enumerate(devices):
+            props = torch.cuda.get_device_properties(device)
+            print(f'GPU {i} type: {props.name} (compute {props.major}.{props.minor})')
+            print(f'GPU {i} RAM:', round(props.total_memory / 1024 / 1024), 'MB')
 
-    end_scale = 512
-    # if args.end_scale.endswith('+'):
-    #     end_scale = get_safe_scale(*content_img.size, end_scale)
-    # args.end_scale = end_scale
+    end_scale = 500
+    if args.end_scale.endswith('+'):
+        end_scale = get_safe_scale(*content_img.size, "end_scale")
+    args.end_scale = end_scale
 
     web_interface = None
     if args.web:
