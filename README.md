@@ -7,6 +7,8 @@
 # 📷Pictoon📷
 
 > 📷Pictoon📷 은 마음에 드는 두 사진을 업로드 하면 사진이 합성되어 나오는 웹 프로젝트 입니다!
+> 
+> 개인만의 작품을 Pictoon을 통해서 만들어보세요⭐
  
 ## 1. 버튼을 눌러 내가 합성하고자 하는 이미지를 업로드 한다.
 <p>
@@ -28,7 +30,7 @@
 
 ---
 
-# ** System Architecture **
+# ✨System Architecture✨
 
 <p align="center"> 
  <img width = 600 img src=https://user-images.githubusercontent.com/80394582/151169042-3b80c11f-d485-4676-bf66-e8681097f655.png>
@@ -36,7 +38,7 @@
 
 <br>
 
-# ** Tech Stack **
+# 💻Tech Stack💻
 frontend|Backend|webserver
 ---|---|---|
 React|Gunicorn|Nginx
@@ -49,7 +51,7 @@ React|Gunicorn|Nginx
 
 <br>
 
-# ** Ports **
+# 🌈Ports🌈
  
 #### Redis : 6379:6379
 #### React : 3000:3000
@@ -63,7 +65,7 @@ React|Gunicorn|Nginx
 
 <br>
 
-# ** 시작하기 **
+# ⚡시작하기⚡
 ## local
 ```bat
 git clone
@@ -74,6 +76,6 @@ docker-compose up
 
 ---
 
-# ** 팀원 **
+# 🧸팀원🧸
 
 <img width = 600 img src="https://user-images.githubusercontent.com/80394582/151170824-1f5ecc46-f156-49c0-95ff-6b6bcc33ade6.png">
