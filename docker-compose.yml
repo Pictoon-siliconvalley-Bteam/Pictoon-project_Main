@@ -1,4 +1,4 @@
-version: '3'
+version: '2.3'
 services:
   redis:
      image: redis:latest
@@ -36,19 +36,11 @@ services:
       context: app
       dockerfile: style_transfer_pytorch/Dockerfile
     container_name: flask
-    image: python3.6
+    image: nvidia/cuda:11.2.0-cudnn8-devel-ubuntu20.04
+    runtime: nvidia
     restart: unless-stopped
     tty: true
-<<<<<<< Updated upstream
-    command : gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
-#    environment:
-##      MONGODB_DATABASE: flaskdb
-##      MONGODB_USERNAME: flaskuser
-##      MONGODB_PASSWORD: f19skp9ssw0rd
-##      MONGODB_HOSTNAME: mongodb
-=======
     command : gunicorn -b 0.0.0.0:5005 -w 3 -t 900 wsgi
->>>>>>> Stashed changes
     volumes:
       - ./app:/app
     depends_on:
@@ -88,24 +80,3 @@ services:
       - "443:443"
     depends_on:
       - flask
-<<<<<<< Updated upstream
-#    networks:
-#      - frontend1
-
-#Docker Networks
-#networks:
-#  frontend1:
-#    driver: bridge
-#  backend:
-#    driver: bridge
-
-#Volumes
-#volumes:
-#  mongodbdata:
-#    driver: local
-#  appdata:
-#    driver: local
-#  nginxdata:
-#    driver: local
-=======
->>>>>>> Stashed changes
