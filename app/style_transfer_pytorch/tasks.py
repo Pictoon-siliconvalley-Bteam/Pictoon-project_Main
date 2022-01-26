@@ -37,6 +37,4 @@ def get_job(job_id):
 @shared_task
 def start():
     main()
-    return 3
-
-
+    return
