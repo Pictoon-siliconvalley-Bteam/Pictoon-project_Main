@@ -39,20 +39,20 @@ services:
     image: python3.6
     restart: unless-stopped
     tty: true
+<<<<<<< Updated upstream
     command : gunicorn -b 0.0.0.0:5005 -w 3 -t 240 wsgi
 #    environment:
 ##      MONGODB_DATABASE: flaskdb
 ##      MONGODB_USERNAME: flaskuser
 ##      MONGODB_PASSWORD: f19skp9ssw0rd
 ##      MONGODB_HOSTNAME: mongodb
+=======
+    command : gunicorn -b 0.0.0.0:5005 -w 3 -t 900 wsgi
+>>>>>>> Stashed changes
     volumes:
       - ./app:/app
     depends_on:
       - rabbit
-#      - mongodb
-#    networks:
-#      - frontend1
-#      - backend
     links:
       - rabbit
   #worker
@@ -68,23 +68,6 @@ services:
       - rabbit
     volumes:
       - ./app:/app
-  #MongoDB database container
-#  mongodb:
-#    image: mongo:4.0.8
-#    container_name: mongodb
-#    restart: unless-stopped
-#    command: mongod --auth
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: mongodbuser
-#      MONGO_INITDB_ROOT_PASSWORD: cl3v3rP9ssw0rd
-#      MONGO_INITDB_DATABASE: flaskdb
-#      MONGODB_DATABASE: flaskdb
-#      MONGODB_USER: flaskuser
-#      MONGODB_PASS: f19skp9ssw0rd
-#      MONGODB_DATA_DIR: /data/db
-#      MONDODB_LOG_DIR: /dev/null
-#    networks:
-#      - backend
 
   #Nginx Service
   webserver:
@@ -105,6 +88,7 @@ services:
       - "443:443"
     depends_on:
       - flask
+<<<<<<< Updated upstream
 #    networks:
 #      - frontend1
 
@@ -123,3 +107,5 @@ services:
 #    driver: local
 #  nginxdata:
 #    driver: local
+=======
+>>>>>>> Stashed changes
