@@ -40,8 +40,3 @@ def start():
     return 3
 
 
-@CELERY.task()
-def test():
-    print('1111')
-    time.sleep(10)
-    print('test')

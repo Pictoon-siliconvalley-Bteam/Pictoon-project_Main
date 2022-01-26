@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a1136b7-1d4b-4ae2-83f0-3e62bdd467b2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/out/out.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/out/out.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/style_transfer/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/style_transfer/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/style_transfer/image/style.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/style_transfer/image/style.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/trace.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/style_transfer_pytorch/trace.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/templates/download.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/templates/process.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/templates/showimage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/style_transfer_pytorch/templates/upload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +27,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="24Ab8be9gNp1yIdlhfzflpsD0SR" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,5 +49,17 @@
       <updated>1643076181405</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
