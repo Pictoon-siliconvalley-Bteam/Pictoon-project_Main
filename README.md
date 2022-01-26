@@ -71,7 +71,7 @@ React|Gunicorn|Nginx
 git clone
 docker-compose up
 ```
-이제 브라우저에서 localhost에 액세스 할 수 있습니다.<br>
+이제 브라우저에서 localhost에 액세스 할 수 있습니다! <br>
 
 
 ---
