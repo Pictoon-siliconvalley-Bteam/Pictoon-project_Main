@@ -9,8 +9,8 @@ export default function Result({lightBg,id,imgStart,topLine,lightText,headLine,d
     const [loading,setLoading] = useState(true);
     setTimeout(() => {
         setLoading(false);
-    },5000); //1000초당 1초
-
+    },20000); //1000초당 1초
+   
     return (
         <ResultContainer>
          <Column2>
@@ -19,16 +19,15 @@ export default function Result({lightBg,id,imgStart,topLine,lightText,headLine,d
                    <>
                    <Heading lightText={lightText}>{headLine}</Heading>
                    <Subtitle darkText={darkText}>{description}</Subtitle>
-                   <Link to='//nft.korbit.co.kr/'>Go to NFT Market </Link>
+                   <Link to='//solsea.io/create'>Go to NFT Market </Link>
                    <br/><br/>
-                   <img src="https://fictoonimage.s3.ap-northeast-2.amazonaws.com/out.jpg"
+                   <img src="https://fictoonimage.s3.ap-northeast-2.amazonaws.com/out"
                             width="600px"
                             height="500px" />
                         </> }
-
-
                 </ImgWrap>
          </Column2>
          </ResultContainer>
     )
 }
+

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const ResultContainer = styled.div`
     color: #fff;
     background: ${({lightBg}) => (lightBg ? '#f9f9f9' : '#010606')}; 
-
+    background-size: cover;
     @media screen and (max-width: 1800px){
         padding: 180px 0;
     }
