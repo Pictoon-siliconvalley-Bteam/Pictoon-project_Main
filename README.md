@@ -91,6 +91,3 @@ docker-compose up
 
 ---
 
-# ** 팀원 **
-
-<img width = 600 img src="https://user-images.githubusercontent.com/80394582/151170824-1f5ecc46-f156-49c0-95ff-6b6bcc33ade6.png">
